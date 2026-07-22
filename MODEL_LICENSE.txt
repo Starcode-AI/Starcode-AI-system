@@ -1,0 +1,36 @@
+BIGSCIENCE OPEN RESPONSIBLE AI LICENSE RATE (OpenRAIL-M)
+Copyright (C) 2026 StarCode-BOM (support@starcode-bom.com)
+
+===============================================================================
+ENGLISH
+===============================================================================
+1. LICENSE GRANT FOR WEIGHTS
+The model weights provided in this repository or generated locally by the system are subject to this OpenRAIL-M license. You may modify, copy, and use them for commercial and non-commercial purposes, provided the restrictions (Section 3) are followed.
+
+2. SPECIFIC CLAUSE FOR SELF-LEARNING UPDATES
+Since this system trains itself locally, any locally generated weight updates, fine-tunings, or checkpoints must automatically remain under this same OpenRAIL-M license structure if shared or published.
+
+3. USE RESTRICTIONS
+It is strictly forbidden to use the model or its derivatives to:
+- Generate illegal content, malware, or deepfakes for deceptive purposes.
+- Engage in discrimination, automated surveillance, or human rights violations.
+
+4. DISCLAIMER
+THE MODEL IS PROVIDED "AS IS". BECAUSE THE SYSTEM FEEDS ITSELF LOCALLY VIA USER DATA, THE AUTHOR (STARCODE-BOM) ASSUMES NO LIABILITY FOR THE OUTPUTS, BEHAVIOR, OR ANY LEGAL VIOLATIONS ARISING FROM LOCAL TRAINING BY THE END-USER.
+
+===============================================================================
+DEUTSCH
+===============================================================================
+1. LIZENZGEBUNG FÜR GEWICHTE
+Die in diesem Repository bereitgestellten oder durch das System lokal generierten Modellgewichte unterliegen dieser OpenRAIL-M Lizenz. Sie dürfen modifiziert, kopiert und für kommerzielle sowie nicht-kommerzielle Zwecke genutzt werden, solange die Nutzungsbeschränkungen (Abschnitt 3) eingehalten werden.
+
+2. SPEZIFISCHE KLAUSEL FÜR SELBSTLERNENDE UPDATES
+Da sich dieses System lokal selbstständig weitertrainiert, gilt: Alle lokal durch die Software generierten Gewichts-Updates oder Feintunings unterliegen bei einer Weitergabe an Dritte automatisch ebenfalls dieser OpenRAIL-M Lizenzstruktur.
+
+3. NUTZUNGSBESCHRÄNKUNGEN
+Es ist strengstens untersagt, das Modell oder dessen Derivate für folgende Zwecke zu nutzen:
+- Generierung von illegalen Inhalten, Schadsoftware oder Deepfakes zur arglistigen Täuschung.
+- Diskriminierung, automatisierte Überwachung oder Verletzung von Menschenrechten.
+
+4. HAFTUNGSAUSSCHLUSS
+DAS MODELL WIRD "WIE BESEHEN" BEREITGESTELLT. DA DAS SYSTEM SICH LOKAL DURCH NUTZERDATEN SELBST FÜTTERT, ÜBERNIMMT DER URHEBER (STARCODE-BOM) KEINE HAFTUNG FÜR DIE AUSGABEN, DAS VERHALTEN ODER ETWAIGE RECHTSVERLETZUNGEN, DIE DURCH DAS LOKALE TRAINING BEIM ENDNUTZER ENTSTEHEN.
