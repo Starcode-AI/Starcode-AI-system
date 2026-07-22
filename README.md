@@ -1,29 +1,29 @@
-# 🧠 Self-Learning Local AI System
-### *Autonomous, Privacy-First, and Continuously Evolving*
+<div align="center">
 
-<p align="center">
-  <img src="https://shields.io" alt="License GPLv3">
-  <img src="https://shields.io" alt="Model License OpenRAIL-M">
-  <img src="https://shields.io" alt="PRs Welcome">
-  <img src="https://shields.io" alt="Platform">
-</p>
+# 🧠 Self-Learning Local AI System
+### *Autonomous • Privacy-First • Continuously Evolving*
+
+[![License: GPL v3](https://shields.io)](./LICENSE)
+[![Model: OpenRAIL-M](https://shields.io)](./MODEL_LICENSE)
+[![PRs Welcome](https://shields.io)](./CONTRIBUTING.md)
+[![Platform: Local](https://shields.io)](./README.md)
 
 ---
 
-## 🌍 Language / Sprache
-* [English](#-english)
-* [Deutsch](#-deutsch)
+[🌐 English](#-english) | [🌐 Deutsch](#-deutsch)
+
+</div>
 
 ---
 
 ## 🇺🇸 English
 
-This is an advanced, autonomous AI agent system designed to run entirely on your local hardware. It features **continuous online learning**, meaning it dynamically feeds and trains itself based on your direct interactions and local data, without ever sending information to the cloud.
+An advanced, autonomous AI agent system designed to run entirely on your local hardware. It features **continuous online learning**, meaning it dynamically feeds and trains itself based on your direct interactions and local data, without ever sending information to the cloud.
 
 ### ✨ Key Features
-* **🔒 100% Privacy-First:** No telemetry, no API calls to third parties. Your data stays on your machine.
-* **⚡ Continuous Live Learning:** The model updates its weights locally in real-time based on your feedback and corrections.
-* **🤖 Advanced Orchestration:** Built-in support for Retrieval-Augmented Generation (RAG) and secure local tool execution.
+* 🔒 **100% Privacy-First** – No telemetry, no API calls to third parties. Your data stays on your machine.
+* ⚡ **Continuous Live Learning** – The model updates its weights locally in real-time based on your feedback.
+* 🤖 **Advanced Orchestration** – Built-in support for Retrieval-Augmented Generation (RAG) and secure local tool execution.
 
 ### 📁 Repository Structure & Licensing
 This project applies a **dual-licensing strategy** to separate pure source code from neural network weights:
@@ -46,12 +46,12 @@ If you discover any security vulnerabilities, please contact us privately at **s
 
 ## 🇩🇪 Deutsch
 
-Dies ist ein hochentwickeltes, autarkes KI-Agenten-System, das vollständig auf Ihrer lokalen Hardware läuft. Es verfügt über **kontinuierliches Live-Training (Online Learning)**. Das bedeutet, dass sich die KI durch Ihre Interaktionen und lokalen Datenströme selbstständig weiterbildet, ohne jemals Daten in die Cloud zu senden.
+Ein hochentwickeltes, autarkes KI-Agenten-System, das vollständig auf Ihrer lokalen Hardware läuft. Es verfügt über **kontinuierliches Live-Training (Online Learning)**. Das bedeutet, dass sich die KI durch Ihre Interaktionen und lokalen Datenströme selbstständig weiterbildet, ohne jemals Daten in die Cloud zu senden.
 
 ### ✨ Hauptmerkmale
-* **🔒 100% Datenschutz:** Keine Telemetrie, keine externen API-Aufrufe. Ihre Daten gehören Ihnen.
-* **⚡ Live-Lernmodus:** Das Modell passt seine Gewichte lokal und in Echtzeit an Ihr Feedback und Ihre Korrekturen an.
-* **🤖 Erweiterte Orchestrierung:** Integrierte Unterstützung für Retrieval-Augmented Generation (RAG) und sichere lokale Tool-Nutzung.
+* 🔒 **100% Datenschutz** – Keine Telemetrie, keine externen API-Aufrufe. Ihre Daten gehören Ihnen.
+* ⚡ **Live-Lernmodus** – Das Modell passt seine Gewichte lokal und in Echtzeit an Ihr Feedback und Ihre Korrekturen an.
+* 🤖 **Erweiterte Orchestrierung** – Integrierte Unterstützung für Retrieval-Augmented Generation (RAG) und sichere lokale Tool-Nutzung.
 
 ### 📁 Repository-Struktur & Lizenzen
 Dieses Projekt nutzt eine **duale Lizenzierungsstrategie**, um Quellcode und neuronale Modellgewichte rechtssicher zu trennen:
@@ -72,6 +72,8 @@ Wenn Sie Sicherheitslücken entdecken, melden Sie diese bitte vertraulich per E-
 
 ---
 
-<p align="center">
-  Built with ❤️ by <b>StarCode-BOM</b> • For inquiries contact <a href="mailto:support@starcode-bom.com">support@starcode-bom.com</a>
-</p>
+<div align="center">
+
+Built with ❤️ by **StarCode-BOM** • For inquiries contact [support@starcode-bom.com](mailto:support@starcode-bom.com)
+
+</div>
