@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Lokal betriebener KI-Assistent für Chat, Recherche, Dateien und Code.">
+  <title>LocalAI Control</title>
+  <link rel="stylesheet" href="/assets/app.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <main id="loginView" class="auth-shell" hidden>
+    <section class="auth-brand" aria-label="LocalAI Control">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <strong>LOCALAI <em>CONTROL</em></strong>
+      </div>
+      <div class="auth-copy">
+        <p class="eyebrow" data-i18n="auth.eyebrow">PRIVATE INTELLIGENCE</p>
+        <h1 data-i18n="auth.title">Deine KI.<br>Deine Hardware.<br>Deine Daten.</h1>
+        <p data-i18n="auth.subtitle">Ein lokaler Arbeitsraum für Recherche, Dokumente und Code – ohne externe KI-API.</p>
+      </div>
+      <div class="trust-row">
+        <span><b class="status-dot"></b><span data-i18n="auth.local">Lokal betrieben</span></span>
+        <span data-i18n="auth.encrypted">Sichere Sitzungen</span>
+        <span data-i18n="auth.noCloud">Keine KI-Cloud</span>
+      </div>
+    </section>
+    <section class="auth-panel">
+      <button class="icon-button auth-theme" data-action="theme" aria-label="Farbschema wechseln">◐</button>
+      <form id="loginForm" class="auth-form">
+        <div>
+          <p class="eyebrow" data-i18n="auth.welcome">WILLKOMMEN ZURÜCK</p>
+          <h2 data-i18n="auth.signIn">Anmelden</h2>
+          <p class="muted" data-i18n="auth.signInHint">Öffne deinen privaten KI-Arbeitsraum.</p>
+        </div>
+        <label><span data-i18n="auth.email">E-Mail</span><input name="email" type="email" autocomplete="username" required placeholder="admin@local.test"></label>
+        <label><span data-i18n="auth.password">Passwort</span><input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <button class="button primary wide" type="submit"><span data-i18n="auth.submit">Sicher anmelden</span><span aria-hidden="true">→</span></button>
+        <p id="setupHint" class="setup-hint" hidden></p>
+      </form>
+      <footer><button class="text-button" data-action="language">DE / EN</button><span><a href="/assets/privacy.html">Datenschutz</a> · <a href="/assets/terms.html">Nutzung</a> · <a href="/assets/imprint.html">Impressum</a></span></footer>
+    </section>
+  </main>
+
+  <div id="appView" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-head">
+        <a class="brand-lockup compact" href="#chat" aria-label="LocalAI Control">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <strong>LOCALAI</strong>
+        </a>
+        <button class="icon-button mobile-only" data-action="close-sidebar" aria-label="Menü schließen">×</button>
+      </div>
+      <button id="newChatButton" class="button primary wide new-chat"><span aria-hidden="true">＋</span><span data-i18n="nav.newChat">Neuer Chat</span></button>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="#chat" data-page="chat"><span>⌁</span><span data-i18n="nav.chat">Chat</span></a>
+        <a href="#research" data-page="research"><span>◎</span><span data-i18n="nav.research">Recherche</span></a>
+        <a href="#files" data-page="files"><span>▱</span><span data-i18n="nav.files">Dateien</span></a>
+        <a href="#projects" data-page="projects"><span>◇</span><span data-i18n="nav.projects">Projekte</span></a>
+        <a href="#knowledge" data-page="knowledge"><span>◈</span><span data-i18n="nav.knowledge">Wissen</span></a>
+        <a href="#history" data-page="history"><span>◷</span><span data-i18n="nav.history">Verlauf</span></a>
+      </nav>
+      <div class="sidebar-section">
+        <p data-i18n="nav.recent">KÜRZLICH</p>
+        <div id="recentChats" class="recent-chats"></div>
+      </div>
+      <div class="sidebar-bottom">
+        <a href="#settings" data-page="settings"><span>⚙</span><span data-i18n="nav.settings">Einstellungen</span></a>
+        <a id="adminNav" href="#admin" data-page="admin" hidden><span>⌘</span><span data-i18n="nav.admin">Administration</span></a>
+        <button id="profileButton" class="profile-card" type="button">
+          <span id="profileInitials" class="avatar">LC</span><span><strong id="profileName">Local User</strong><small id="profileRole">Benutzer</small></span><span>⋯</span>
+        </button>
+      </div>
+    </aside>
+
+    <div id="sidebarScrim" class="sidebar-scrim" data-action="close-sidebar"></div>
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-only" data-action="open-sidebar" aria-label="Menü öffnen">☰</button>
+          <div><p id="pageEyebrow" class="eyebrow">WORKSPACE</p><h1 id="pageTitle">Chat</h1></div>
+        </div>
+        <div class="topbar-actions">
+          <span id="modelState" class="model-pill"><b class="status-dot"></b><span>Modell prüfen …</span></span>
+          <button class="icon-button" data-action="theme" aria-label="Farbschema wechseln">◐</button>
+          <button class="icon-button" data-action="language" aria-label="Sprache wechseln">文</button>
+        </div>
+      </header>
+
+      <section id="page-chat" class="page chat-page" data-page-section="chat">
+        <div id="chatEmpty" class="chat-empty">
+          <div class="orb" aria-hidden="true"><span></span></div>
+          <p class="eyebrow" data-i18n="chat.private">LOKALE INTELLIGENZ</p>
+          <h2 data-i18n="chat.greeting">Wobei kann ich dir helfen?</h2>
+          <p data-i18n="chat.hint">Frag etwas, analysiere eine Datei oder beginne eine sichere Recherche.</p>
+          <div class="prompt-grid">
+            <button data-prompt="Vergleiche drei sichere Möglichkeiten, eine lokale Python-Webanwendung bereitzustellen."><span>◎</span><b data-i18n="chat.cardResearch">Quellen vergleichen</b><small data-i18n="chat.cardResearchSub">Aktuelle Informationen prüfen</small></button>
+            <button data-prompt="Prüfe meinen Code auf Sicherheitsprobleme. Ich füge ihn gleich ein."><span>⌘</span><b data-i18n="chat.cardCode">Code prüfen</b><small data-i18n="chat.cardCodeSub">Fehler und Risiken finden</small></button>
+            <button data-prompt="Hilf mir, ein vollständiges Projekt mit README und Tests zu planen."><span>◇</span><b data-i18n="chat.cardProject">Projekt planen</b><small data-i18n="chat.cardProjectSub">Struktur und Dateien erstellen</small></button>
+          </div>
+        </div>
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="composer" class="composer">
+          <textarea id="chatInput" rows="1" maxlength="100000" data-i18n-placeholder="chat.placeholder" placeholder="Nachricht an dein lokales Modell …"></textarea>
+          <div class="composer-row">
+            <div>
+              <button type="button" class="chip" data-action="go-files">＋ <span data-i18n="chat.attach">Datei</span></button>
+              <label class="toggle-chip"><input id="researchToggle" type="checkbox"><span>◎</span><span data-i18n="chat.web">Recherche</span></label>
+            </div>
+            <div><span id="contextMeter" class="context-meter">0 / 8k</span><button id="stopButton" class="send-button stop" type="button" hidden>■</button><button id="sendButton" class="send-button" type="submit" aria-label="Senden">↑</button></div>
+          </div>
+        </form>
+      </section>
+
+      <section id="page-research" class="page" data-page-section="research" hidden>
+        <div class="page-intro"><div><p class="eyebrow">VERIFIED WEB</p><h2 data-i18n="research.title">Mehrere Quellen, eine klare Antwort.</h2><p data-i18n="research.subtitle">Nur öffentliche HTTPS-Seiten. Lokale Adressen, unsichere Weiterleitungen und Prompt-Injection werden blockiert.</p></div><span class="feature-badge">HTTPS ONLY</span></div>
+        <form id="researchForm" class="search-panel"><input id="researchQuery" required minlength="2" maxlength="1000" data-i18n-placeholder="research.placeholder" placeholder="Was möchtest du verlässlich recherchieren?"><button class="button primary" data-i18n="research.submit">Recherchieren</button></form>
+        <div id="researchResult" class="result-area empty-state"><span>◎</span><p data-i18n="research.empty">Deine geprüfte Recherche erscheint hier.</p></div>
+      </section>
+
+      <section id="page-files" class="page" data-page-section="files" hidden>
+        <div class="page-intro"><div><p class="eyebrow">SAFE INSPECTION</p><h2 data-i18n="files.title">Dateien analysieren, niemals blind ausführen.</h2><p data-i18n="files.subtitle">Typ, Größe, Hash, Archive, PDF-Inhalte, Code-Risiken und manipulative Anweisungen werden geprüft.</p></div></div>
+        <label id="dropZone" class="drop-zone"><input id="fileInput" type="file" hidden><span class="drop-icon">⇧</span><strong data-i18n="files.drop">Datei hier ablegen oder auswählen</strong><small data-i18n="files.formats">TXT, PDF, Code, JSON, ZIP, TAR, 7Z und mehr</small></label>
+        <div id="fileResult" class="result-area" hidden></div>
+        <div class="section-head"><h3 data-i18n="files.recent">Letzte Analysen</h3><button class="text-button" data-action="refresh-files" data-i18n="common.refresh">Aktualisieren</button></div>
+        <div id="fileList" class="card-list"></div>
+      </section>
+
+      <section id="page-projects" class="page" data-page-section="projects" hidden>
+        <div class="page-intro"><div><p class="eyebrow">PROJECT FORGE</p><h2 data-i18n="projects.title">Vom Auftrag zum geprüften ZIP-Projekt.</h2><p data-i18n="projects.subtitle">Das lokale Modell erstellt vollständige Dateien, Prüfsummen und einen Sicherheitsbericht.</p></div></div>
+        <form id="projectForm" class="form-card">
+          <div class="field-row"><label><span data-i18n="projects.name">Projektname</span><input name="name" required value="mein-projekt" pattern="[A-Za-z0-9_-]+"></label><label><span data-i18n="projects.language">Sprache</span><select name="language"><option value="auto">Auto</option><option>Python</option><option>TypeScript</option><option>JavaScript</option><option>Lua</option><option>C#</option><option>Rust</option></select></label></div>
+          <label><span data-i18n="projects.description">Beschreibung</span><textarea name="description" rows="7" minlength="10" required data-i18n-placeholder="projects.placeholder" placeholder="Beschreibe Funktionen, Zielplattform, Design und Anforderungen …"></textarea></label>
+          <button class="button primary" data-i18n="projects.generate">Projekt lokal erzeugen</button>
+        </form>
+        <div class="section-head"><h3 data-i18n="projects.jobs">Aufgaben</h3><button class="text-button" data-action="refresh-jobs" data-i18n="common.refresh">Aktualisieren</button></div>
+        <div id="jobList" class="card-list"></div>
+      </section>
+
+      <section id="page-knowledge" class="page" data-page-section="knowledge" hidden>
+        <div class="page-intro"><div><p class="eyebrow">CONTROLLED MEMORY</p><h2 data-i18n="knowledge.title">Wissen mit Herkunft und Vertrauenswert.</h2><p data-i18n="knowledge.subtitle">Hinweise werden nicht automatisch zur Wahrheit. Bestätigung bleibt kontrolliert.</p></div><button id="addKnowledgeButton" class="button primary">＋ <span data-i18n="knowledge.add">Eintrag</span></button></div>
+        <div class="filter-bar"><input id="knowledgeSearch" data-i18n-placeholder="common.search" placeholder="Suchen …"><select id="knowledgeCategory"><option value="" data-i18n="knowledge.all">Alle Kategorien</option><option value="confirmed">Bestätigt</option><option value="unconfirmed">Unbestätigt</option><option value="user_note">Nutzerhinweis</option><option value="researched">Recherchiert</option><option value="outdated">Veraltet</option><option value="conflicting">Widersprüchlich</option></select></div>
+        <div id="knowledgeList" class="knowledge-grid"></div>
+      </section>
+
+      <section id="page-history" class="page" data-page-section="history" hidden>
+        <div class="page-intro"><div><p class="eyebrow">CONVERSATIONS</p><h2 data-i18n="history.title">Dein Verlauf bleibt bei dir.</h2><p data-i18n="history.subtitle">Unterhaltungen durchsuchen, archivieren oder endgültig löschen.</p></div></div>
+        <div class="filter-bar"><input id="historySearch" data-i18n-placeholder="common.search" placeholder="Unterhaltungen durchsuchen …"><label class="toggle-chip"><input id="archiveFilter" type="checkbox"><span data-i18n="history.archived">Archiviert</span></label></div>
+        <div id="historyList" class="card-list"></div>
+      </section>
+
+      <section id="page-settings" class="page" data-page-section="settings" hidden>
+        <div class="page-intro"><div><p class="eyebrow">PREFERENCES</p><h2 data-i18n="settings.title">Einstellungen & Datenschutz</h2><p data-i18n="settings.subtitle">Darstellung, Sitzungen, Export und Kontosicherheit.</p></div></div>
+        <div class="settings-grid">
+          <article class="form-card"><h3 data-i18n="settings.appearance">Darstellung</h3><div class="setting-row"><span data-i18n="settings.theme">Farbschema</span><button class="button secondary" data-action="theme">Dark / Light</button></div><div class="setting-row"><span data-i18n="settings.language">Sprache</span><button class="button secondary" data-action="language">Deutsch / English</button></div></article>
+          <article class="form-card"><h3 data-i18n="settings.data">Deine Daten</h3><p class="muted" data-i18n="settings.dataHint">Lade Kontodaten, Chats, Feedback und eigene Wissenseinträge als JSON.</p><button id="exportButton" class="button secondary" data-i18n="settings.export">Daten exportieren</button></article>
+          <article class="form-card full"><div class="section-head"><h3 data-i18n="settings.sessions">Aktive Sitzungen</h3><button class="text-button" data-action="refresh-sessions" data-i18n="common.refresh">Aktualisieren</button></div><div id="sessionList" class="card-list compact-list"></div></article>
+          <article class="form-card danger-card"><h3 data-i18n="settings.signout">Sitzung beenden</h3><p class="muted" data-i18n="settings.signoutHint">Du kannst dich jederzeit sicher abmelden.</p><button id="logoutButton" class="button danger" data-i18n="settings.logout">Abmelden</button></article>
+        </div>
+      </section>
+
+      <section id="page-admin" class="page" data-page-section="admin" hidden>
+        <div class="page-intro"><div><p class="eyebrow">SYSTEM CONTROL</p><h2 data-i18n="admin.title">Administration</h2><p data-i18n="admin.subtitle">Hardware, lokales Modell, Benutzer und Sicherheitsereignisse.</p></div><button class="button secondary" data-action="refresh-admin" data-i18n="common.refresh">Aktualisieren</button></div>
+        <div id="statusCards" class="metric-grid"></div>
+        <div class="admin-grid"><article class="form-card"><div class="section-head"><h3 data-i18n="admin.models">Modelle</h3></div><div id="modelList" class="card-list compact-list"></div><form id="pullModelForm" class="inline-form"><input name="name" placeholder="qwen2.5-coder:7b" required><button class="button secondary" data-i18n="admin.install">Installieren</button></form></article><article class="form-card"><h3 data-i18n="admin.security">Letzte Sicherheitsereignisse</h3><div id="securityList" class="event-list"></div></article></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="knowledgeDialog">
+    <form id="knowledgeForm" method="dialog" class="dialog-form">
+      <div class="section-head"><div><p class="eyebrow">NEW RECORD</p><h2 data-i18n="knowledge.addTitle">Wissenseintrag anlegen</h2></div><button class="icon-button" value="cancel" aria-label="Schließen">×</button></div>
+      <label><span data-i18n="knowledge.entryTitle">Titel</span><input name="title" required minlength="2" maxlength="240"></label>
+      <label><span data-i18n="knowledge.content">Inhalt</span><textarea name="content" required rows="7"></textarea></label>
+      <div class="field-row"><label><span data-i18n="knowledge.source">Quelle</span><input name="source" placeholder="https://…"></label><label><span data-i18n="knowledge.category">Kategorie</span><select name="category"><option value="user_note">Nutzerhinweis</option><option value="unconfirmed">Unbestätigt</option><option value="researched">Recherchiert</option></select></label></div>
+      <button class="button primary" type="submit" data-i18n="common.save">Speichern</button>
+    </form>
+  </dialog>
+</body>
+</html>
