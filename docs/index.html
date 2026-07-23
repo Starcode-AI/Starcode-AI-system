@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect / Weiterleitung</title>
+    <script>
+        // Ziel-URLs definieren
+        const urlDe = "https://github.com/Starcode-AI/Starcode-AI-system
+        const urlEn = "https://github.com/Starcode-AI/Starcode-AI-system";
+
+        // Systemsprache des Browsers auslesen (z.B. "de", "de-DE", "en", "en-US")
+        const userLanguage = navigator.language || navigator.userLanguage;
+
+        // Prüfen, ob die Sprache mit "de" beginnt
+        if (userLanguage.startsWith("de")) {
+            window.location.replace(urlDe);
+        } else {
+            // Standard für alle anderen Sprachen (Englisch)
+            window.location.replace(urlEn);
+        }
+    </script>
+</head>
+<body>
+    <p>Please wait, you are being redirected...</p>
+    <p>Bitte warten, Sie werden weitergeleitet...</p>
+</body>
+</html>
