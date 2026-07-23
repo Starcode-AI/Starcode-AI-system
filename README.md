@@ -74,6 +74,6 @@ Wenn Sie Sicherheitslücken entdecken, melden Sie diese bitte vertraulich per E-
 
 <div align="center">
 
-Built with ❤️ by **StarCode-BOM** • For inquiries contact [support@starcode-bom.com](mailto:support@starcode-bom.com)
+Built with ❤️ by **StarCode-BOM** and **HackerIP54** • For inquiries contact [support@starcode-bom.com](mailto:support@starcode-bom.com)
 
 </div>
