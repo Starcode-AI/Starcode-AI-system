@@ -1,5 +1,5 @@
 BIGSCIENCE OPEN RESPONSIBLE AI LICENSE RATE (OpenRAIL-M)
-Copyright (C) 2026 StarCode-BOM (support@starcode-bom.com)
+Copyright (C) 2026 StarCode-bom, hackerip54 (support@starcode-bom.com)
 
 ===============================================================================
 ENGLISH
